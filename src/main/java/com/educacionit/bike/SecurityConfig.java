@@ -19,8 +19,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	@Bean//con @bean defino una instancia singleton en el core containner de spring
 	//para que luego en otra capa se pueda llamar y obtener la instancia a traves de un @autowired (en nuestro caso sera la capa de test )
 	public BCryptPasswordEncoder passwordEncoder() {
-		BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-		return bCryptPasswordEncoder;
+		return  new BCryptPasswordEncoder();
 	}
 	
 	
@@ -33,16 +32,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	//en el application.properties pero a nivel de spring en memoria
 	@Override
 		protected void configure(AuthenticationManagerBuilder auth) throws Exception  {
-		//si quiero incluso puedo tener users en memoria , pero para que tenerlos en memorias si puedo disponerlos en la DB
-			/*auth.
-			inMemoryAuthentication()
-			.withUser("usernamealex")
-			.password("miclave123")
-			.roles("USER")
-			.and()
-			.withUser("usuarioAdmin1")
-			.password("claveAdmin")
-			.roles("USER", "ADMIN");*/ //roles de mi app 
+		
 		
 		//al objeto auth mediante el metodo "userDetailsService()"  le pasamos la implementacion que creamos de UserDetailsService 
 		//y tambien le pasamos el password encoder 

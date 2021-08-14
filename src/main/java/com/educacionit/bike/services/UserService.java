@@ -37,14 +37,13 @@ public class UserService implements UserDetailsService{
 		
 		//el metodo debe retornar un objeto UserDetail entonces creamos un objeto de este tipo
 		//y le pasamos (usuario , clave , roles )
-		UserDetails userDet = new User(us.getNombre() , us.getClave() , roles );
 		
 		
 		//esto no es dificil , no asustarse solo debemos adaptarnos a la forma que Spring maneja la seguridad , imaginen
 		//si fuera al reves Spring deberia adaptarse a todos los modelos de las bases de datos y no existiria algo standarizado para trabajaar
 		//con seguridad de spring 
 		
-		return userDet;
+		return new User(us.getNombre() , us.getClave() , roles );
 	}
 
 }

@@ -22,24 +22,16 @@ import com.educacionit.bike.repositories.BikeRepository;
 public class BikeController {
 	@Autowired
 	private BikeRepository bk;
-	
-//	@GetMapping
-//	public String holaMundo () {
-//		return "Hola mundo soy una Api RESt de Spring Boot";
-//	}
-//	
 	@GetMapping
 	public List<Bike> lista () {
 		return bk.findAll();
 		
 	}
 	
-	// http://localhost:8888/api/v1/bikes/${id}	
 	//este recurso retona una bike mediante el id recibido en la url 
 	@GetMapping("/{id}")
 	@ResponseStatus(HttpStatus.OK)
 	public Bike getBike(@PathVariable("id")Long id) {
-		System.out.println("recibimos por path variable el id : " + id );
 		return bk.getOne(id);
 	}
 
